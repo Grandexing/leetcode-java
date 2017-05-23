@@ -6,11 +6,14 @@ public class Pattern132 {
         int length = nums.length;
         if (length<3) return false;
         int index = 0;
+        int equalPos = 0;
         for (int i = 0; i < length-2; i++) {
-            for (int j = i+1; j < length-1; j++) {
-                if (nums[j]>nums[i]){
-                    for (int k = j+1; k < length; k++) {
-                        if (nums[k]>nums[i] && nums[k]<nums[j]) return true;
+            if (nums[i]<nums[i+1]){
+                for (int j = i+1; j < length-1; j++) {
+                    if (nums[j]>nums[i] && nums[j]-nums[i]>1){
+                        for (int k = j+1; k < length; k++) {
+                            if (nums[k]>nums[i] && nums[k]<nums[j]) return true;
+                        }
                     }
                 }
             }
