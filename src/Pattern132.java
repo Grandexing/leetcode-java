@@ -6,19 +6,12 @@ import java.util.HashSet;
 public class Pattern132 {
     public static boolean find132pattern(int[] nums) {
         int length = nums.length;
-        if (length < 3) return false;
-        HashSet set = new HashSet();
-        for (int i = 0; i < length - 2; i++) {
-            if (!set.contains(i)) {
-                for (int j = i + 1; j < length - 1; j++) {
-                    if (nums[j] - nums[i] > 1) {
-                        for (int k = j + 1; k < length; k++) {
-                            if (nums[k] > nums[i] && nums[k] < nums[j]) return true;
-                        }
-                    }
-                }
+        for (int j = 0,min = Integer.MAX_VALUE; j < length - 1; j++) {
+            min = Integer.min(nums[j], min);
+            if (min == nums[j]) continue;
+            for (int k = j+1; k < length; k++) {
+                if (min < nums[k] && nums[k] < nums[j]) return true;
             }
-            set.add(nums[i]);
         }
         return false;
     }
@@ -40,6 +33,6 @@ public class Pattern132 {
 
     public static void main(String[] args) {
         int[] nums = {3, 1, 4, 2};
-        System.out.println(find132patternV2(nums));
+        System.out.println(find132pattern(nums));
     }
 }
