@@ -18,15 +18,12 @@ public class Pattern132 {
 
     public static boolean find132patternV2(int[] nums) {
         int length = nums.length;
-        int i = 0;
-        while (i < length - 2) {
-            int min = nums[i];
-            int max = min;
-            for (int j = i + 1; j < length - 1; j++) {
-                if (nums[j] > max) max = nums[j];
-                else if (nums[j] < max) return true;
+        for (int j = 0,min = Integer.MAX_VALUE; j < length - 1; j++) {
+            min = Integer.min(nums[j], min);
+            if (min == nums[j]) continue;
+            for (int k = length - 1; k > j; k--) {
+                if (min < nums[k] && nums[k] < nums[j]) return true;
             }
-            i++;
         }
         return false;
     }
