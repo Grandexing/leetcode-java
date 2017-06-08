@@ -3,8 +3,8 @@
  */
 public class NumberComplement {
     public static void main(String[] args) {
-        int num = 12;
-        System.out.println("\n"+findComplement(num));
+        int num = 2147483647;
+        System.out.println(findComplementV2(num));
 //        System.out.println((int) '0' - 48);
     }
     public static int findComplement(int num) {
@@ -18,5 +18,10 @@ public class NumberComplement {
             result+=Math.pow(2, length - 1 - i) * b;
         }
         return result;
+    }
+    public static int findComplementV2(int num) {
+        int length = Integer.toBinaryString(num).length();
+        long result = (long) Math.pow(2, length) - 1 - num;
+        return (int) result;
     }
 }
