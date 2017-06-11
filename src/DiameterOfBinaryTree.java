@@ -4,24 +4,33 @@
 public class DiameterOfBinaryTree {
     public static void main(String[] args) {
         TreeNode root=new TreeNode(1);
-        TreeNode left1=new TreeNode(2);
-        TreeNode left2=new TreeNode(3);
-        TreeNode right1=new TreeNode(4);
-        TreeNode right2=new TreeNode(5);
-        root.left=left1;
-        left1.left=left2;
-        left2.left=right1;
-        right1.left=right2;
+        TreeNode node1=new TreeNode(2);
+        TreeNode node2=new TreeNode(3);
+        TreeNode node3=new TreeNode(4);
+        TreeNode node4=new TreeNode(5);
+        root.left=node1;
+        node1.left=node2;
+        node2.left=node3;
+        node3.left=node4;
         scanNodes(root);
         System.out.println("树的深度是："+diameterOfBinaryTree(root));
     }
+    static int max = 0;
+
     public static int diameterOfBinaryTree(TreeNode root) {
+        maxDepth(root);
+        return max;
+    }
+
+    private static int maxDepth(TreeNode root) {
         if (root == null) return 0;
-        if (root.left == null && root.right == null) return 0;
-        int left = diameterOfBinaryTree(root.left);
-        int right = diameterOfBinaryTree(root.right);
-//        return left > right ? left + 1:right + 1;
-        return 1 + Math.max(left, right);
+
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+
+        max = Math.max(max, left + right);
+
+        return Math.max(left, right) + 1;
     }
 
     static void scanNodes(TreeNode root){
