@@ -6,12 +6,9 @@ import java.util.Arrays;
 public class PerfectSquares {
     public static void main(String[] args) {
         int n = 12;
-        System.out.println(new Solution().numSquares(n));
+        System.out.println(numSquares(n));
     }
-}
-
-class Solution {
-    public int numSquares(int n) {
+    public static int numSquares(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 0;
@@ -27,3 +24,4 @@ class Solution {
         return dp[n];
     }
 }
+
