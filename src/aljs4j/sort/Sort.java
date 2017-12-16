@@ -6,7 +6,7 @@ public class Sort {
     public static void main(String[] args) {
         int[] a = new int[]{1, 5, 3, 2, 4, 6};
         show(a);
-        insertionSort(a);
+        insertionSortV2(a);
         show(a);
         System.out.println(isSorted(a));
     }
@@ -32,6 +32,19 @@ public class Sort {
                     exch(a, j, j - 1);
                 }
             }
+        }
+    }
+
+
+    public static void insertionSortV2(int[] a) {
+        for (int i = 1; i < a.length; i++) {
+            int key = a[i];
+            int j = i - 1;
+            while (j > 0 && a[j] > key){
+                a[j + 1] = a[j];
+                j--;
+            }
+            a[j + 1] = key;
         }
     }
 
