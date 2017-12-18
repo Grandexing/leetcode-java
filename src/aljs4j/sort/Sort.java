@@ -4,12 +4,27 @@ public class Sort {
 
 
     public static void main(String[] args) {
-        int[] a = new int[]{1, 5, 3, 2, 4, 6};
+        int[] a = new int[]{1, 5, 342, 3, 2, 4, 6, 10, 123, 1234, 321, 345};
         show(a);
-        insertionSortV2(a);
+        shellSort(a);
         show(a);
         System.out.println(isSorted(a));
     }
+
+
+    public static void shellSort(int[] a) {
+        int N = a.length;
+        int h = 1;
+        while (h < N/3) h = 3 * h + 1; 
+        while (h >= 1){
+            for (int i = h; i < N; i++) {
+                for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
+                    exch(a, j, j - h);
+                }
+            }
+            h = h / 3;
+        }
+     }
 
 
     public static void selectionSort(int[] a) {
