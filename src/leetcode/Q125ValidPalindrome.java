@@ -4,10 +4,36 @@ public class Q125ValidPalindrome {
     public static void main(String[] args) {
         String s1 = "A man, a plan, a canal: Panama";
         String s2 = "race a car";
-        System.out.println(isPalindrome(s1));
-        System.out.println(isPalindrome(s2));
-        System.out.println(isPalindrome("0P"));
+        System.out.println(isPalindrome2(s1));
+        System.out.println(isPalindrome2(s2));
+        System.out.println(isPalindrome2("0P"));
     }
+
+
+    public static boolean isPalindrome2(String s) {
+        if (s.isEmpty()) return true;
+        int head = 0;
+        int tail = s.length() - 1;
+        char chead, ctail;
+        while (head <= tail) {
+            chead = s.charAt(head);
+            ctail = s.charAt(tail);
+            if (!Character.isLetterOrDigit(chead)){
+                head++;
+            } else if (!Character.isLetterOrDigit(ctail)){
+                tail--;
+            } else {
+                if (Character.toLowerCase(chead) != Character.toLowerCase(ctail)){
+                    return false;
+                }
+                head++;
+                tail--;
+            }
+        }
+        return true;
+    }
+
+
     public static boolean isPalindrome(String s) {
         if (s.isEmpty()) return true;
         char[] cs = s.toCharArray();
