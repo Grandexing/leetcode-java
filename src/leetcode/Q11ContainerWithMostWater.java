@@ -5,25 +5,29 @@ package leetcode;
  */
 public class Q11ContainerWithMostWater {
     public static void main(String[] args) {
-        
+
     }
 
 
     public static int maxArea(int[] height) {
-        int maxContainer = 0;
+        if (height==null || height.length==0) { return 0; }
+        int max = 0;
         int N = height.length;
-        for (int i = 1; i <= N; i++){
-            for (int j = 0; j < N - i; j++) {
-                int container = i * min(height[j], height[j + i]);
-                if (container > maxContainer) maxContainer = container;
+        int i = 0;
+        int j = N - 1;
+        while(i < j) {
+            max = Math.max(max, (j - i) * Math.min(height[i], height[j]));
+            if(height[i] < height[j]) {
+                int k = i + 1;
+                for (; k < j && height[k] <= height[i]; k++) {}
+                i = k;
+            } else {
+                int k = j - 1;
+                for (; k > i && height[k] <= height[j]; k--) {}
+                j = k;
             }
         }
-        return maxContainer;
+        return max;
     }
 
-
-    static int min(int a, int b) {
-        if(a < b) return a;
-        else return b;
-    }
 }
