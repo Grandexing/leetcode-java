@@ -7,6 +7,26 @@ public class Q238ProductofArrayExceptSelf {
     }
 
 
+    public static int[] productExceptSelf1(int[] nums) {
+        int N = nums.length;
+        int[] res = new int[N];
+        res[0] = 1;
+        int i = 1;
+        while (i < N) {
+            res[i] = res[i - 1] * nums[i - 1];
+            i++;
+        }
+        int right = 1;
+        i = N - 1;
+        while (i >= 0) {
+            res[i] = res[i] * right;
+            right = right * nums[i];
+            i--;
+        }
+        return res;
+    }
+
+
     public static int[] productExceptSelf(int[] nums) {
         // int[] provs, nexts = new int[nums.length];
         int lo = 1;
