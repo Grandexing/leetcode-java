@@ -9,45 +9,48 @@ public class Q238ProductofArrayExceptSelf {
 
     public static int[] productExceptSelf1(int[] nums) {
         int N = nums.length;
-        int[] provs = new int[N];
-        int[] nexts = new int[N];
-        provs[0] = 1;
-        nexts[N - 1] = 1;
+        int[] res = new int[N];
+        res[0] = 1;
         int i = 1;
-        int j = N - 2;
-        while (i < j) {
-            provs[i] = provs[i - 1] * nums[i - 1];
-            nexts[j] = nexts[j + 1] * nums[j + 1];
-            i++;
-            j--;
-        }
         while (i < N) {
-            provs[i] = provs[i - 1] * nums[i - 1];
-            nexts[j] = nexts[j + 1] * nums[j + 1];
-            nums[i] = provs[i] * nexts[i];
-            nums[j] = provs[j] * nexts[j];
+            res[i] = res[i - 1] * nums[i - 1];
             i++;
-            j--;
         }
-        return nums;
+        int right = 1;
+        i = N - 1;
+        while (i >= 0) {
+            res[i] = res[i] * right;
+            right = right * nums[i];
+            i--;
+        }
+        return res;
     }
 
 
     public static int[] productExceptSelf(int[] nums) {
-        int N = nums.length;
-        int[] provs = new int[N];
-        int[] nexts = new int[N];
-        provs[0] = 1;
-        nexts[N - 1] = 1;
-        for (int i = 1; i < N; i++) {
-            provs[i] = provs[i - 1] * nums[i - 1];
+        // int[] provs, nexts = new int[nums.length];
+        int lo = 1;
+        int hi = nums.length - 2;
+        int prov = 1;
+        int next = 1;
+        while(lo < hi) {
+            prov = prov * nums[lo - 1];
+            next = next * nums[hi + 1];
+            nums[lo] = prov;
+            nums[hi] = next;
+            lo++;
+            hi--;
         }
-        for (int j = N - 2; j > -1; j--) {
-            nexts[j] = nexts[j + 1] * nums[j + 1];
+
+        while(lo < nums.length && nums.length > 2) {
+            prov = prov * nums[lo - 1];
+            next = next * nums[hi + 1];
+            nums[lo] = prov * nums[lo];
+            nums[hi] = next * nums[hi];
+            lo++;
+            hi--;
         }
-        for (int k = 0; k < N; k++) {
-            nums[k] = provs[k] * nexts[k];
-        }
+
         return nums;
     }
 
