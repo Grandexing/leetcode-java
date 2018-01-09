@@ -1,7 +1,11 @@
-/**
- * Created by grande on 2017/5/18.
- */
-public class StringToInteger {
+package leetcode;
+
+public class Q8StringtoInteger {
+    public static void main(String[] args) {
+
+    }
+
+
     public static int myAtoi(String str) {
         long ans = 0;
         char[] chars = str.trim().toCharArray();
@@ -33,12 +37,5 @@ public class StringToInteger {
         if (res<Integer.MIN_VALUE) return Integer.MIN_VALUE;
         if (res>Integer.MAX_VALUE) return Integer.MAX_VALUE;
         return (int)res;
-    }
-
-    public static void main(String[] args) {
-        String i = "9223372036854775809";
-        System.out.println(myAtoi(i));
-        System.out.println(Long.MAX_VALUE);
-//        System.out.println(Integer.MIN_VALUE);
     }
 }
