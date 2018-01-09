@@ -12,6 +12,6 @@ public class Q206ReverseLinkedList {
 
 
     public static ListNode reverseList(ListNode head) {
-        
+        return head;
     }
 }
