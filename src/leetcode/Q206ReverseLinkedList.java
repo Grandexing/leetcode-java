@@ -44,17 +44,17 @@ public class Q206ReverseLinkedList {
 //非递归
     public static ListNode reverseList(ListNode head) {
         if(head == null || head.next == null) return head;
-        ListNode prov, cur, next;
-        cur = head.next;
+        ListNode p, q, r;
+        p = head;
+        q = head.next;
         head.next = null;
-        prov = head;
-        while(cur != null) {
-            next = cur.next;
-            cur.next = prov;
-            prov = cur;
-            cur = next;
+        while (q != null) {
+            r = q.next;
+            q.next = p;
+            p = q;
+            q = r;
         }
-        head = prov;
+        head = p;
         return head;
     }
 }
