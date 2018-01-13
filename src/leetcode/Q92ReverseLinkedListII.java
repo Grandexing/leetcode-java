@@ -10,10 +10,10 @@ public class Q92ReverseLinkedListII {
 
     public static ListNode reverseBetween(ListNode head, int m, int n) {
         if (head == null || m == n) return head;
-        ListNode dummy, start, p, q;
-        dummy = new ListNode(0);
-        p = dummy;
-        dummy.next = head;
+        ListNode preHead, start, p, q;
+        preHead = new ListNode(0);
+        p = preHead;
+        preHead.next = head;
         for (int i = 0; i < m - 1; i++) {
             p = p.next;
         }
@@ -26,6 +26,6 @@ public class Q92ReverseLinkedListII {
             q.next = start.next;
             start.next = q;
         }
-        return dummy.next;
+        return preHead.next;
     }
 }
