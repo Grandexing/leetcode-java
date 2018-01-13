@@ -9,20 +9,23 @@ public class Q92ReverseLinkedListII {
 
 
     public static ListNode reverseBetween(ListNode head, int m, int n) {
-        if((n - m) == 0) return head;
-        ListNode p, q, r;
-        int k = n - m;
-        p = head;
-        m--;
-        while (m > 0) {
+        if (head == null || m == n) return head;
+        ListNode dummy, start, p, q;
+        dummy = new ListNode(0);
+        p = dummy;
+        dummy.next = head;
+        for (int i = 0; i < m - 1; i++) {
             p = p.next;
-            m--;
         }
-
-        while (k > 0) {
+        start = p;
+        System.out.println(p.val);
+        p = p.next;
+        for (int i = 0; i < n - m; i++) {
             q = p.next;
             p.next = q.next;
-            q.next = p;
+            q.next = start.next;
+            start.next = q;
         }
+        return dummy.next;
     }
 }
