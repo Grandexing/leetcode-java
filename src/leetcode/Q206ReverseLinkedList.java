@@ -1,6 +1,6 @@
 package leetcode;
 
-import leetcode.classes.ListNode;
+import classes.ListNode;
 
 /**
  * Created by grande on 2018/1/9.

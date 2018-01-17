@@ -1,4 +1,4 @@
-package leetcode.classes;
+package classes;
 
 /**
  * Created by grande on 2018/1/9.

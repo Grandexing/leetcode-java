@@ -1,27 +1,25 @@
 package sword2offer;
 
 public class Q4 {
-    public String replaceSpace(StringBuffer str) {
-        if (str == null) return null;
-        if (str.length() == 0) return str.toString();
-        char[] cs = str.toString().toCharArray();
-        int spaceCount = 0;
-        for (char c : cs) {
-            if (c == ' ') spaceCount++;
-        }
-        if (spaceCount == 0) return str.toString();
-        //int newLength = str.length() + 2 * spaceCount;
-        StringBuffer sb = new StringBuffer();
-        int i = 0;
-        //int j = 0;
-        while (i < str.length()) {
-            if (cs[i] == ' ') {
-                sb.append("%20");
-            } else {
-                sb.append(cs[i]);
+
+    static boolean find(int target, int [][] array) {
+        boolean found = false;
+        if(array == null || array.length == 0 || array[0].length == 0) return found;
+        int rows = array.length;
+        int columns = array[0].length;
+        int row = 0;
+        int column = columns- 1;
+        while (row < rows && column >= 0) {
+            if (array[row][column] == target) {
+                found = true;
+                break;
             }
-            i++;
+            if (array[row][column] > target) {
+                column--;
+            } else {
+                row++;
+            }
         }
-        return sb.toString();
+        return found;
     }
 }

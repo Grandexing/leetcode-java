@@ -1,37 +1,27 @@
 package sword2offer;
 
-import leetcode.classes.ListNode;
-
-import java.util.ArrayList;
-import java.util.Stack;
-
 public class Q5 {
-//使用stack
-    public ArrayList<Integer> printListFromTailToHead1(ListNode listNode) {
-        ArrayList<Integer> list = new ArrayList<>();
-        if (listNode == null) return list;
-        Stack<Integer> stack = new Stack<>();
-        ListNode p = listNode;
-        while (p != null) {
-            stack.push(p.val);
-            p = p.next;
+    public String replaceSpace(StringBuffer str) {
+        if (str == null) return null;
+        if (str.length() == 0) return str.toString();
+        char[] cs = str.toString().toCharArray();
+        int spaceCount = 0;
+        for (char c : cs) {
+            if (c == ' ') spaceCount++;
         }
-        while (!stack.isEmpty()) {
-            list.add(stack.pop());
+        if (spaceCount == 0) return str.toString();
+        //int newLength = str.length() + 2 * spaceCount;
+        StringBuffer sb = new StringBuffer();
+        int i = 0;
+        //int j = 0;
+        while (i < str.length()) {
+            if (cs[i] == ' ') {
+                sb.append("%20");
+            } else {
+                sb.append(cs[i]);
+            }
+            i++;
         }
-        return list;
-    }
-
-//    递归
-    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
-        ArrayList<Integer> list = null;
-        if(listNode != null) {
-            list = printListFromTailToHead(listNode.next);
-            list.add(listNode.val);
-            System.out.println(listNode.val);
-        } else {
-            list = new ArrayList<>();
-        }
-        return list;
+        return sb.toString();
     }
 }

@@ -1,6 +1,6 @@
 package leetcode;
 
-import leetcode.classes.ListNode;
+import classes.ListNode;
 
 public class Q92ReverseLinkedListII {
     public static void main(String[] args) {

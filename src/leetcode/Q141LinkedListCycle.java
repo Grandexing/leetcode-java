@@ -1,6 +1,6 @@
 package leetcode;
 
-import leetcode.classes.ListNode;
+import classes.ListNode;
 
 public class Q141LinkedListCycle {
     public static boolean hasCycle(ListNode head) {
