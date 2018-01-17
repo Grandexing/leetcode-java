@@ -1,7 +1,7 @@
 package sword2offer;
 
 public class Q3 {
-    
+
     static boolean find(int target, int [][] array) {
         boolean found = false;
         if(array == null || array.length == 0 || array[0].length == 0) return found;
