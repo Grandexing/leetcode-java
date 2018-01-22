@@ -5,19 +5,17 @@ import static sword2offer.Q17.Print1ToMaxOfNDigits_2;
 
 public class Q17 {
     public static void main(String[] args) {
-        Print1ToMaxOfNDigits_1(1);
-//        printNumber("00000123".toCharArray());
-//        Test4Q17 test = new Test4Q17();
-//        test.Test(2);
-//        test.Test(3);
-//        test.Test(0);
-//        test.Test(-1);
+        Test4Q17 test = new Test4Q17();
+        test.Test(2);
+        test.Test(3);
+        test.Test(0);
+        test.Test(-1);
     }
 
 
     static void Print1ToMaxOfNDigits_1(int n) {
         if (n <= 0) return;
-        char[] number = new char[n + 1];
+        char[] number = new char[n];
         for (int i = 0; i < number.length; i++) {
             number[i] = '0';
         }
@@ -28,7 +26,24 @@ public class Q17 {
 
 
     static void Print1ToMaxOfNDigits_2(int n) {
+        if (n <= 0) return;
+        char[] number = new char[n];
+        for (int i = 0; i < 10; i++) {
+            number[0] = (char) (i + '0');
+            Print1ToMaxOfNDigits_2(number, n, 0);
+        }
+    }
 
+
+    static void Print1ToMaxOfNDigits_2(char[] number, int n, int index) {
+        if (index == number.length - 1) {
+            printNumber(number);
+            return;
+        }
+        for (int i = 0; i < 10; i++) {
+            number[index + 1] = (char) (i + '0');
+            Print1ToMaxOfNDigits_2(number, n, index + 1);
+        }
     }
 
 
@@ -74,11 +89,11 @@ public class Q17 {
 class Test4Q17 {
     void Test(int n)
     {
-        System.out.println("Test for %d begins:\n");
+        System.out.println(String.format("Test for %d begins:", n));
 
         Print1ToMaxOfNDigits_1(n);
         Print1ToMaxOfNDigits_2(n);
 
-        System.out.println("\nTest for %d ends.\n");
+        System.out.println(String.format("Test for %d ends.", n));
     }
 }
