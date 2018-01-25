@@ -10,6 +10,7 @@ public class Q31 {
             int popIndex = 0;
             Stack<Integer> stack = new Stack<>();
             while (popIndex < popA.length) {
+//                如果栈是空的，或栈顶元素不等于弹出序列的元素
                 while (stack.isEmpty() || stack.peek() != popA[popIndex]) {
                     if (pushIndex == pushA.length) {
                         break;
@@ -17,6 +18,7 @@ public class Q31 {
                     stack.push(pushA[pushIndex]);
                     pushIndex++;
                 }
+//                如果栈顶元素不等于弹出序列元素，说明不匹配，直接break
                 if (stack.peek() != popA[popIndex]) {
                     break;
                 }
