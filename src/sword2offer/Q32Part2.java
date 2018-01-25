@@ -2,6 +2,7 @@ package sword2offer;
 
 import classes.TreeNode;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -14,6 +15,37 @@ public class Q32Part2 {
         q32Part2.Test4();
         q32Part2.Test5();
         q32Part2.Test6();
+    }
+
+
+    ArrayList<ArrayList<Integer>> Print1(TreeNode pRoot) {
+        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+        if (pRoot == null) return result;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(pRoot);
+        int toBePrint = 1;
+        int nextLevel = 0;
+        ArrayList<Integer> row = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            TreeNode node = queue.poll();
+            row.add(node.val);
+            if (node.left != null) {
+                queue.add(node.left);
+                nextLevel++;
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+                nextLevel++;
+            }
+            toBePrint--;
+            if (toBePrint == 0) {
+                toBePrint = nextLevel;
+                nextLevel = 0;
+                result.add(row);
+                row = new ArrayList<>();
+            }
+        }
+        return result;
     }
 
 
