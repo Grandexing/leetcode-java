@@ -17,7 +17,17 @@ public class Q36 {
 
     public TreeNode convert(TreeNode pNode, TreeNode lastNodeInList) {
         if (pNode == null) return lastNodeInList;
-        TreeNode pCurrent = pNode;
-
+        if (pNode.left != null) {
+            lastNodeInList = convert(pNode.left, lastNodeInList);
+        }
+        pNode.left = lastNodeInList;
+        if (lastNodeInList != null) {
+            lastNodeInList.right = pNode;
+        }
+        lastNodeInList = pNode;
+        if (pNode.right != null) {
+            lastNodeInList = convert(pNode.right, lastNodeInList);
+        }
+        return lastNodeInList;
     }
 }
