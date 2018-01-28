@@ -5,28 +5,58 @@ import java.util.*;
 public class Q38 {
     public static void main(String[] args) {
         Q38 q38 = new Q38();
-//        ArrayList<String> result = q38.Permutation("abcd");
-//        for (String s : result
-//             ) {
-//            System.out.println(s);
-//        }
-        ArrayList<StringBuffer> combineResult = q38.combine("abcd");
-        for (StringBuffer s : combineResult
+        ArrayList<String> result = q38.Permutation("abcd");
+        for (String s : result
+             ) {
+            System.out.println(s);
+        }
+        ArrayList<String> combineResult = q38.combine1("abcd");
+        for (String s : combineResult
                 ) {
             System.out.println(s);
         }
-//        System.out.println(new String(Arrays.copyOfRange("abcd".toCharArray(), 0, 1)));
     }
 
 
-    public ArrayList<StringBuffer> combine(String str) {
+    ArrayList<String> combine1(String str) {
+        if (str == null || str.length() == 0) return new ArrayList<>();
+        ArrayList<String> result = new ArrayList<>();
+        char[] cs = str.toCharArray();
+        for (int i = 1; i <= cs.length; i++) {
+            ArrayList<String> result1 = new ArrayList<>();
+            combine1(cs, cs.length, i, 0, result1, new StringBuffer());
+            result.addAll(result1);
+        }
+        return result;
+    }
+
+
+    void combine1(char[] cs, int n, int k, int start, ArrayList<String> result, StringBuffer sb) {
+        if (k == 0) {
+            result.add(sb.toString());
+            return;
+        }
+        for (int i = start; i < n - k + 1; i++) {
+            sb.append(cs[i]);
+            combine1(cs, n, k - 1, i + 1, result, sb);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+
+
+    public ArrayList<String> combine(String str) {
+        if (str == null || str.length() == 0) return new ArrayList<>();
         ArrayList<StringBuffer> result = new ArrayList<>();
-        if (str == null || str.length() == 0) return result;
         char[] cs = str.toCharArray();
         for (int i = 1; i <= cs.length; i++) {
             result.addAll(combine(cs, cs.length, i));
         }
-        return result;
+        ArrayList<String> result1 = new ArrayList<>();
+        for (StringBuffer sb: result
+             ) {
+            result1.add(sb.toString());
+        }
+        return result1;
     }
 
 
@@ -73,7 +103,9 @@ public class Q38 {
     }
 
     void permutation(char[] cs, int begin, ArrayList<String> result) {
-        if (begin == cs.length && !result.contains(new String(cs))) {
+        if (begin == cs.length
+//                && !result.contains(new String(cs))
+                ) {
             result.add(new String(cs));
             return;
         }
