@@ -8,13 +8,13 @@ public class Sort {
     public static void main(String[] args) {
         int[] a = new int[]{1, 5, 342, 3, 2, 4, 6, 10, 123, 1234, 321, 345};
         show(a);
-        MergeSort.mergeSortBU(a);
+        InsertionSortV2.sort(a);
         show(a);
         System.out.println(isSorted(a));
     }
 
 
-    public static void exch(int[] a, int i, int j) {
+    public static void swap(int[] a, int i, int j) {
         int t = a[i];
         a[i] = a[j];
         a[j] = t;

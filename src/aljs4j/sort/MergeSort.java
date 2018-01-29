@@ -6,7 +6,7 @@ import static aljs4j.sort.Sort.less;
  * Created by grande on 2018/1/29.
  */
 public class MergeSort {
-    public static void mergeSortBU(int[] a) {
+    public static void sort(int[] a) {
         int N = a.length;
         for (int sz = 1; sz < N; sz = sz + sz) {
             for (int lo = 1; lo < N - sz; lo = lo + sz + sz) {
