@@ -37,14 +37,26 @@ public class MergeSortBU {
         int j = mid + 1;
         //将左右两个有序数组归并为一个数组
         for (int k = lo; k <= hi; k++) {
-            //左边数组耗尽
-            if (i > mid) a[k] = aux[j++];
-                //右边数组耗尽
-            else if (j > hi) a[k] = aux[i++];
-                //右边小于左边，用右边
-            else if (aux[j] < aux[i]) a[k] = aux[j++];
-                //左边小于等于右边，用左边
-            else a[k] = aux[i++];
+            //左边数组耗尽，这一步是否有必要？
+            if (i > mid) {
+                a[k] = aux[j];
+                j++;
+            }
+            //右边数组耗尽
+            else if (j > hi) {
+                a[k] = aux[i];
+                i++;
+            }
+            //右边小于左边，用右边
+            else if (aux[j] < aux[i]) {
+                a[k] = aux[j];
+                j++;
+            }
+            //左边小于等于右边，用左边
+            else {
+                a[k] = aux[i];
+                i++;
+            }
         }
     }
 }
