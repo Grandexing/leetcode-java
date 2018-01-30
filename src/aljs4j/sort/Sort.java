@@ -9,7 +9,7 @@ public class Sort {
         int[] a = new int[]{1, 5, 342, 3, 2, 4, 6, 10, 123, 1234, 321, 345};
         System.out.println("原数组：");
         show(a);
-        InsertionSort.sort(a);
+        ShellSort.sort(a);
         System.out.println("排序结果：");
         show(a);
         System.out.println("是否已排序？"+isSorted(a));
