@@ -24,9 +24,9 @@ public class Q55Part2 {
 
 
     private class Holder {
+//        使用对象解决java无法传整型变量的地址的问题
         int val;
     }
-
 
 
     boolean isBalanced(TreeNode root, Holder depth) {
