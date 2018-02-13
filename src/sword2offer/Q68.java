@@ -1,10 +1,7 @@
 package sword2offer;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Q68 {
 //    leetcode 236 二叉树的最低公共祖先
