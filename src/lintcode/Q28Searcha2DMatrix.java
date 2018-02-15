@@ -1,6 +1,9 @@
 package lintcode;
 
 public class Q28Searcha2DMatrix {
+//    http://www.lintcode.com/en/problem/search-a-2d-matrix/
+
+
     public boolean searchMatrix2(int[][] matrix, int target) {
         // write your code here
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
