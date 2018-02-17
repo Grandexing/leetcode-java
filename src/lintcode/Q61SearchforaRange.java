@@ -1,7 +1,7 @@
 package lintcode;
 
 public class Q61SearchforaRange {
-
+//http://www.lintcode.com/en/problem/search-for-a-range/
 
     public int[] searchRange(int[] A, int target) {
         // write your code here
