@@ -62,7 +62,7 @@ public class Q66BinaryTreePreorderTraversal {
         // divide
         List<Integer> leftBranch = preorderTraversal(root.left);
         List<Integer> rightBranch = preorderTraversal(root.right);
-        // conquer
+        // conquer(merge)
         result.add(root.val);
         result.addAll(leftBranch);
         result.addAll(rightBranch);
