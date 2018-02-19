@@ -12,7 +12,6 @@ public class Q97MaximumDepthofBinaryTree {
         }
         int leftDepth = maxDepth(root.left);
         int rightDepth = maxDepth(root.right);
-        int maxDepth = Math.max(leftDepth, rightDepth) + 1;
-        return maxDepth;
+        return Math.max(leftDepth, rightDepth) + 1;
     }
 }
