@@ -2,6 +2,8 @@ package lintcode;
 
 import classes.TreeNode;
 
+import java.util.Stack;
+
 public class Q453FlattenBinaryTreetoLinkedList {
 //    http://www.lintcode.com/en/problem/flatten-binary-tree-to-linked-list/
 
@@ -49,5 +51,32 @@ public class Q453FlattenBinaryTreetoLinkedList {
             return leftLast;
         }
         return root;
+    }
+
+// 非递归
+    public void flatten2(TreeNode root) {
+        // write your code here
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        TreeNode prev = null;
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            node.left = null;
+            if (stack.isEmpty()) {
+                node.right = null;
+            } else {
+                node.right = stack.peek();
+            }
+        }
+        root.left = null;
     }
 }
