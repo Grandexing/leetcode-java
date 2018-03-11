@@ -48,11 +48,10 @@ public class Q40 {
         while (index != k - 1) {
             if (index > k - 1) {
                 hi = index - 1;
-                index = partition(input, lo, hi);
             } else {
                 lo = index + 1;
-                index = partition(input, lo, hi);
             }
+            index = partition(input, lo, hi);
         }
         for (int i = 0; i < k; i++) {
             result.add(input[i]);
