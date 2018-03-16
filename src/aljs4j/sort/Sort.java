@@ -6,7 +6,7 @@ public class Sort {
 
 
     public static void main(String[] args) {
-        int[] a = new int[]{1, 5, 342, 3, 2, 4, 6, 10, 123, 1234, 321, 345};
+        int[] a = new int[]{1, 1,1,1,1,1};
         System.out.println("原数组：");
         show(a);
         QuickSort.sort(a);

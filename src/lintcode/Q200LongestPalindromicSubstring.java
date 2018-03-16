@@ -14,7 +14,7 @@ public class Q200LongestPalindromicSubstring {
         }
         for (int i = 0; i < s.length() - 1; i++) {
             isPalindrome[i][i + 1] = s.charAt(i) == s.charAt(i + 1);
-            if (longest == 1 && isPalindrome[i][i + 1] == true) {
+            if (longest == 1 && isPalindrome[i][i + 1]) {
                 start = i;
                 longest = 2;
             }

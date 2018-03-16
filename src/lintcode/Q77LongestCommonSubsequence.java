@@ -1,5 +1,7 @@
 package lintcode;
 
+import java.util.Arrays;
+
 public class Q77LongestCommonSubsequence {
 //    http://www.lintcode.com/en/problem/longest-common-subsequence/
     public int longestCommonSubsequence(String A, String B) {

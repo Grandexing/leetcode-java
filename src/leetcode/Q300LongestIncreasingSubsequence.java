@@ -8,18 +8,18 @@ public class Q300LongestIncreasingSubsequence {
             return 0;
         }
         int n = nums.length;
-        int[] dp = new int[n];
-        dp[0] = 1;
+//         f[i]: 以 nums[i] 为结尾的最长增长子序列长度
+        int[] f = new int[n];
+        f[0] = 1;
         int max = 1;
         for (int i = 1; i < n; i++) {
-            int maxVal = 0;
+            f[i] = 1;
             for (int j = 0; j < i; j++) {
-                if (nums[j] < nums[i]) {
-                    maxVal = Math.max(dp[j], maxVal);
+                if (nums[j] < nums[i] && f[i] < f[j] + 1) {
+                    f[i] = f[j] + 1;
                 }
             }
-            dp[i] = maxVal + 1;
-            max = Math.max(max, dp[i]);
+            max = Math.max(f[i], max);
         }
         return max;
     }
