@@ -1,34 +1,16 @@
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class Test {
     public static void main(String[] args) {
-//        String a = new String("123");
-//        String b = new String("123");
-        char[] cs = "1   2".toCharArray();
-        int end = removeExtraSpace(cs);
-        System.out.println(end);
-        System.out.println(new String(Arrays.copyOf(cs, 3)));
+        Scanner scan = new Scanner(System.in);
+        int[] is = new int[2];
+        String[] strings = scan.next().split(" ");
+        is[0] = Integer.parseInt(strings[0]);
+        is[1] = Integer.parseInt(strings[1]);
+        System.out.println("输入的是："+Arrays.toString(is));
     }
 
 
-    private static int removeExtraSpace(char[] cs) {
-        int end = 0;
-        int index = 0;
-        while (index < cs.length) {
-            if (cs[index] == ' ' && index > 0 && cs[index - 1] == ' ') {
-                index++;
-            } else {
-//                end++;
-                if (index != end) {
-                    System.out.println(end);
-                    System.out.println(index);
-                    cs[end] = cs[index];
-                }
-                index++;
-                end++;
-            }
-        }
-        return end;
-    }
 }
