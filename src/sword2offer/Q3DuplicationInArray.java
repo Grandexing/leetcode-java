@@ -1,6 +1,6 @@
 package sword2offer;
 
-public class Q3 {
+public class Q3DuplicationInArray {
     public static void main(String[] args) {
         int[] nums = {2, 3, 1, 0, 2, 5, 3};
         System.out.println(duplicate1(nums));
@@ -50,6 +50,6 @@ public class Q3 {
                 nums[i] = tmp;
             }
         }
-        return true;
+        return false;
     }
 }

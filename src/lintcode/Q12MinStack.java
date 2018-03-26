@@ -20,6 +20,31 @@ public class Q12MinStack {
     private Stack<Integer> minStack;
     private Stack<Integer> stack;
 
+//更省空间的版本
+    public void push1(int number) {
+        // write your code here
+        stack.push(number);
+        if (minStack.isEmpty()) {
+            minStack.push(number);
+        } else {
+            if (minStack.peek() >= number) {
+                // 相等的情况也要push
+                minStack.push(number);
+            }
+        }
+    }
+
+    /*
+     * @return: An integer
+     */
+    public int pop1() {
+        // write your code here
+        int num = stack.pop();
+        if (minStack.peek() == num) {
+            minStack.pop();
+        }
+        return num;
+    }
 
     public void push(int number) {
         // write your code here

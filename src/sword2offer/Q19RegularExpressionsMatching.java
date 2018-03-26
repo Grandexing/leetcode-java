@@ -1,6 +1,6 @@
 package sword2offer;
 
-public class Q19 {
+public class Q19RegularExpressionsMatching {
     public static void main(String[] args) {
         System.out.println(match("".toCharArray(), ".*".toCharArray()));
     }
@@ -76,8 +76,6 @@ public class Q19 {
         if (patternIndex < pattern.length - 1 && pattern[patternIndex + 1] == '*') {
             if ((strIndex != str.length && pattern[patternIndex] == str[strIndex]) || (pattern[patternIndex] == '.' && strIndex < str.length)) {
                 return match(str, pattern, strIndex, patternIndex + 2)
-//                        此情况包含在另两种情况中，注释掉也可以通过
-//                        || match(str, pattern, strIndex + 1, patternIndex + 2)
                         || match(str, pattern, strIndex + 1, patternIndex);
             } else {
                 return match(str, pattern, strIndex, patternIndex + 2);
