@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class Caculator1 {
     public static void main(String[] args) {
-        List<Object> postfix = infixToPostfix1("(6+6)*6");
+        List<Object> postfix = infixToPostfix("3+(2-5)*6/3");
         for (Object p:postfix
              ) {
             System.out.print(p);
