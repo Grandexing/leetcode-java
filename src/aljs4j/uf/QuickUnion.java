@@ -1,10 +1,10 @@
 package aljs4j.uf;
 
-public class QuickFind implements UF {
+public class QuickUnion implements UF {
     private int[] id;//分量id
     private int count;//分量数量
 
-    public QuickFind(int size) {
+    public QuickUnion(int size) {
         id = new int[size];
         count = size;
         for (int i = 0; i < size; i++) {
@@ -12,24 +12,23 @@ public class QuickFind implements UF {
         }
     }
 
+
     @Override
     public void union(int p, int q) {
-        int pID = find(p);
-        int qID = find(q);
-        if (pID == qID) {
-            return;
+        int pRoot = find(p);
+        int qRoot = find(q);
+        if (pRoot != qRoot) {
+            id[pRoot] = qRoot;
+            count--;
         }
-        for (int i = 0; i < id.length; i++) {
-            if (id[i] == pID) {
-                id[i] = qID;
-            }
-        }
-        count--;
     }
 
     @Override
     public int find(int p) {
-        return id[p];
+        while (p != id[p]) {
+            p = id[p];
+        }
+        return p;
     }
 
     @Override
