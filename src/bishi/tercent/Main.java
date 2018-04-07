@@ -1,3 +1,5 @@
+package bishi.tercent;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,9 +26,18 @@ public class Main {
         List<ResultType> result = new ArrayList<>();
         dfs(k, 0, lenA, numA, 0, lenB, numB, result);
         HashSet<Long> set = new HashSet<>();
+        int curA = k / lenA;
+        int curB = 0;
+        int remain = k % lenA;
+        while (curA >= 0) {
+            if (remain - curB * lenB == 0) {
+                result.add(new ResultType(curA, curB));
+            }
+
+        }
         for (ResultType rt : result) {
 //            System.out.println(rt.countA + " " + rt.countB);
-            long res = combine(rt.countA, numA) * combine(rt.countB, numB) % mod;
+            long res = combine(rt.countA, numA) * combine(rt.countB, numB);
             set.add(res);
 //            System.out.println(res);
         }
@@ -58,7 +69,7 @@ public class Main {
         for (int i = a; i > 0; i--) {
             down *= i;
         }
-        return up % mod / down % mod;
+        return (up % mod / down % mod) % mod;
     }
 }
 /*
