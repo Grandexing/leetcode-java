@@ -1,15 +1,21 @@
 package aljs4j.sort;
 
 import java.lang.Math;
+import java.util.Random;
 
 public class Sort {
 
 
     public static void main(String[] args) {
-        int[] a = new int[]{1, 1,1,1,1,1};
+        int n = 100;
+        int[] a = new int[n];
+        Random rand = new Random();
+        for (int i = 0; i < n; i++) {
+            a[i] = rand.nextInt(n);
+        }
         System.out.println("原数组：");
         show(a);
-        QuickSort.sort(a);
+        RadixSort.sort(a);
         System.out.println("排序结果：");
         show(a);
         System.out.println("是否已排序？"+isSorted(a));
@@ -30,7 +36,7 @@ public class Sort {
 
     public static boolean isSorted(int[] a) {
         for (int i = 1; i < a.length; i++) {
-            if (!less(a[i - 1], a[i])) return false;
+            if (a[i - 1] > a[i]) return false;
         }
         return true;
     }

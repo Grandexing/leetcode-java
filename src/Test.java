@@ -9,7 +9,7 @@ public class Test {
         String c = "123";
         String d = "123";
         System.out.println(c == d);
-        System.out.println(Main.combine(1,5));
+//        System.out.println(Main.combine(1,5));
     }
 
     static int combine(int a, int b) {
