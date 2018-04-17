@@ -84,7 +84,7 @@ public class MaxHeap {
 //        父节点的位置
         int parent = (cur - 1) / 2;
         while (cur > 0) {
-            if (queue[parent] > queue[cur]) {
+            if (queue[parent] >= queue[cur]) {
                 break;
             } else {
                 queue[cur] = parent;

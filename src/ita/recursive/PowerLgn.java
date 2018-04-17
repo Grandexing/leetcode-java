@@ -6,17 +6,18 @@ package ita.recursive;
 public class PowerLgn {
 //    复杂度为logn的，递归式的乘方算法
     public static void main(String[] args) {
-        System.out.println(power(2, 3));
+        System.out.println(power(2, 6));
     }
 
 
     static int power(int i, int n){
         if (n < 0) return 0;
         if (n == 0) return 1;
+        int half = power(i, n/2);
         if (n % 2 == 0){
-            return power(i, n/2) * power(i, n/2);
+            return half * half;
         } else {
-            return power(i, n/2) * power(i, n/2) * i;
+            return half * half * i;
         }
     }
 }
